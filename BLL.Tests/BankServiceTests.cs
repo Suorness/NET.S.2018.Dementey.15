@@ -11,18 +11,17 @@
     [TestFixture]
     public class BankServiceTests
     {
-
-        [TestCase("Vasya", "Vas","1")]
-        [TestCase("Katya", "Kat","1")]
-        [TestCase("Helen", "H","1")]
-        [TestCase("Vlad", "V","1")]
-        [TestCase("FirstName", "LastName","Number")]
+        [TestCase("Vasya", "Vas", "1")]
+        [TestCase("Katya", "Kat", "1")]
+        [TestCase("Helen", "H", "1")]
+        [TestCase("Vlad", "V", "1")]
+        [TestCase("FirstName", "LastName", "Number")]
         public void GeneratorCallTests(string firstName, string lastName, string number)
         {
             var storageMock = new Mock<IAccountStorage>();
             var generatorMock = new Mock<IGeneratorNumber>();
 
-            generatorMock.Setup(generator => generator.GenerateNumber(firstName,lastName,0))
+            generatorMock.Setup(generator => generator.GenerateNumber(firstName, lastName, 0))
                 .Returns(number);
             var bankManager = new BankService(storageMock.Object, generatorMock.Object);
 
@@ -55,7 +54,7 @@
             generatorMock.Setup(generator => generator.GenerateNumber("f", "l", 0))
                 .Returns(number);
             var bankManager = new BankService(storageMock.Object, generatorMock.Object);
-            Assert.Throws<ArgumentException>(() => bankManager.WithdrawMoney(number,0m));
+            Assert.Throws<ArgumentException>(() => bankManager.WithdrawMoney(number, 0m));
         }
 
         [TestCase(null)]
@@ -84,6 +83,5 @@
             bankManager.GetAccounts();
             storageMock.Verify(s => s.GetBankAccounts(), Times.Exactly(2));
         }
-
     }
 }
