@@ -9,17 +9,17 @@
 
     public class Program
     {
-        private static readonly IKernel resolver;
+        private static readonly IKernel Resolver;
 
         static Program()
         {
-            resolver = new StandardKernel();
-            resolver.ConfigurateResolver();
+            Resolver = new StandardKernel();
+            Resolver.ConfigurateResolver();
         }
 
         public static void Main(string[] args)
         {
-            IBankManager bankManager = resolver.Get<IBankManager>();
+            IBankManager bankManager = Resolver.Get<IBankManager>();
 
             try
             {

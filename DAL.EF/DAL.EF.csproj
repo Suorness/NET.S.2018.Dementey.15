@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0E2A4009-7741-45A0-9212-CCA69C32A77F}</ProjectGuid>
+    <ProjectGuid>{32C05E8D-0BD0-4AD1-A192-D7121E566375}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DependencyResolver</RootNamespace>
-    <AssemblyName>DependencyResolver</AssemblyName>
+    <RootNamespace>DAL.EF</RootNamespace>
+    <AssemblyName>DAL.EF</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,29 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ResolverConfig.cs" />
+    <Compile Include="AccountStorageEF.cs" />
+    <Compile Include="BankAccountContext.cs" />
+    <Compile Include="Entities\AccountEF.cs" />
+    <Compile Include="Entities\AccountTypeEF.cs" />
+    <Compile Include="Mappers\AccountMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL.BankSystem\BLL.BankSystem.csproj">
-      <Project>{4f2175d2-6fd3-4b27-a149-c00e28e36112}</Project>
-      <Name>BLL.BankSystem</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BLL.Interface\BLL.Interface.csproj">
-      <Project>{fa86c3dc-7e54-4f25-83d0-45e949585915}</Project>
-      <Name>BLL.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL.EF\DAL.EF.csproj">
-      <Project>{32c05e8d-0bd0-4ad1-a192-d7121e566375}</Project>
-      <Name>DAL.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL.Fake\DAL.Fake.csproj">
-      <Project>{7e03fac9-a21a-43cc-b4ea-17c2e1fe5ac6}</Project>
-      <Name>DAL.Fake</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAL.Interface\DAL.Interface.csproj">
       <Project>{bdf220b6-54e7-41be-a9c4-02f29388d875}</Project>
       <Name>DAL.Interface</Name>

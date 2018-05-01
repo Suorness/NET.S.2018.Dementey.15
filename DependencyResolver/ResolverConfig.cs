@@ -2,6 +2,7 @@
 {
     using BLL.BankSystem.ServicesImplementation;
     using BLL.Interface.Interfaces;
+    using DAL.EF;
     using DAL.Fake;
     using DAL.Interface.Interfaces;
     using Ninject;
@@ -12,7 +13,8 @@
         {
             kernel.Bind<IBankManager>().To<BankService>();
             kernel.Bind<IGeneratorNumber>().To<GeneratorAccountNumber>();
-            kernel.Bind<IAccountStorage>().To<FakeStorage>();
+            /// kernel.Bind<IAccountStorage>().To<FakeStorage>();
+            kernel.Bind<IAccountStorage>().To<AccountStorageEF>();
         }
     }
 }

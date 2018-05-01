@@ -33,6 +33,8 @@
         [TestCase("", "Vas", "1")]
         [TestCase("Vasya", "", "1")]
         [TestCase("", "", "1")]
+        [TestCase(null, "", "1")]
+        [TestCase("f", null, "1")]
         public void OpenAccountThrowsArgumentException(string firstName, string lastName, string number)
         {
             var storageMock = new Mock<IAccountStorage>();
